@@ -5,6 +5,7 @@ window.onload = function(){
 let colourChange = document.getElementById("boundary1");
     colourChange.addEventListener("mouseover",function (){
     colourChange.classList.add("youlose");});
+let status=0;
 
 //make all boundaries glow red on hover
 let areas=document.querySelectorAll(".boundary");
@@ -13,7 +14,15 @@ let areas=document.querySelectorAll(".boundary");
        {
          areas[i].classList.add("youlose");
        }
+       status=1;
      });
+     
+//congratulate the user when them reach the end
+let end = document.getElementById("end");
+    end.addEventListener("mouseover",function (){
+    if(status===0)
+    alert(" You win!");
+    });
 
 }
 //load on the html file to full load before run
