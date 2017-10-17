@@ -10,6 +10,7 @@ let start =document.getElementById("start");
       if(status===0)
       updates.textContent=" Start";
      session = 1;
+     all();
      });
 
 //give the user instructions on how to continue
@@ -30,6 +31,7 @@ let status=0;
 
 //make all boundaries glow red on hover
 let areas=document.querySelectorAll(".boundary");
+function all() {
     for(let j=0; j<6;j++)
         areas[j].addEventListener("mouseover",function () {
         for(let i=0; i<6;i++)
@@ -40,30 +42,46 @@ let areas=document.querySelectorAll(".boundary");
         updates.textContent="You lose! ";
         setTimeout(con,1000);
         });
+}
 
 
 //congratulate the user when them reach the end
 let end = document.getElementById("end");
     end.addEventListener("mouseover",function (){
-    if(status===0){
+    if(status===0 && session==1){
       updates.textContent="You win!";
+      status=1;
       setTimeout(con,2000);
-    }
-    });
+      }
+      else{
+        updates.textContent="NO Cheating! ";
+        setTimeout(con,1000);
+      }
+      });
 
 // reset the game
 let resetMaze = document.getElementById("start");
     resetMaze.addEventListener("click",function () {
-    for(let i=0; i<6;i++)
-         {
-           areas[i].classList.remove("youlose");
-         }
+      for(let i=0; i<6;i++)
+               {
+                 areas[i].classList.remove("youlose");
+               }
          status=0;
          session=0;
          updates.textContent="Move your mouse over the 'S' to begin";
-
        });
 
+
+/*let maze = document.getElementById("maze");
+   maze.addEventListener("mouseout", function () {
+     for(let i=0; i<6;i++)
+     {
+       areas[i].classList.add("youlose");
+     }
+     status=1;
+     updates.textContent="NO Cheating! ";
+     setTimeout(con,1000);
+   });*/
 
 
 }
