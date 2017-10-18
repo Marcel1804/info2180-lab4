@@ -8,9 +8,10 @@ let session=0;
 let start =document.getElementById("start");
      start.addEventListener("mouseover",function(){
       if(status===0)
-      updates.textContent=" Start";
+      updates.textContent=" Go !";
      session = 1;
      all();
+     noCheater();
      });
 
 //give the user instructions on how to continue
@@ -71,18 +72,21 @@ let resetMaze = document.getElementById("start");
          updates.textContent="Move your mouse over the 'S' to begin";
        });
 
-
-/*let maze = document.getElementById("maze");
-   maze.addEventListener("mouseout", function () {
-     for(let i=0; i<6;i++)
-     {
-       areas[i].classList.add("youlose");
+// provide Cheating by make ensure use stay in the maze
+let maze = document.getElementById("maze");
+function noCheater() {
+   start.addEventListener("mouseout", function () {
+      maze.addEventListener("mouseleave",function(){
+           for(let i=0; i<6;i++)
+           {
+             areas[i].classList.add("youlose");
+           }
+           status=1;
+           updates.textContent="NO Cheating! ";
+           setTimeout(con,1000);
+         });
+       });
      }
-     status=1;
-     updates.textContent="NO Cheating! ";
-     setTimeout(con,1000);
-   });*/
-
 
 }
 //load on the html file to full load before run
