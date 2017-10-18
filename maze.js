@@ -10,6 +10,7 @@ let start =document.getElementById("start");
       if(status===0)
       updates.textContent=" Go !";
      session = 1;
+     topWall();
      all();
      noCheater();
      });
@@ -23,10 +24,11 @@ function con() {
 let updates = document.getElementById("status");
 
 //change the colour of one section(top-left) of the maze
-let colourChange = document.getElementById("boundary1");
-    colourChange.addEventListener("mouseover",function (){
-    colourChange.classList.add("youlose");});
-
+function topWall(){
+    let colourChange = document.getElementById("boundary1");
+        colourChange.addEventListener("mouseover",function (){
+        colourChange.classList.add("youlose");});
+}
 // keep track if the user touch the wall
 let status=0;
 
@@ -87,6 +89,5 @@ function noCheater() {
          });
        });
      }
-
 }
 //load on the html file to full load before run
